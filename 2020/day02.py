@@ -28,7 +28,7 @@ def solve_part2(input_file):
     with open(input_file) as f:
         for line in f.readlines():
             pos1, pos2, char, passwd = parse('{:d}-{:d} {}: {}', line)
-            if (passwd[pos1-1] == char and passwd[pos2-1] != char) or (passwd[pos1-1] != char and passwd[pos2-1] == char):
+            if (passwd[pos1-1] == char) + (passwd[pos2-1] == char) == 1:
                 valid_passwds_count+=1
 
     return valid_passwds_count
