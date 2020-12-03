@@ -1,7 +1,6 @@
 #!/usr/local/bin/python3
 
 from parse import parse
-from itertools import cycle
 import os
 
 def main():
