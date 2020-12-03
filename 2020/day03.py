@@ -1,6 +1,5 @@
 #!/usr/local/bin/python3
 
-from parse import parse
 import os
 
 def main():
