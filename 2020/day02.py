@@ -4,8 +4,7 @@ from parse import parse
 import os
 
 def main():
-    do_small = False
-    input_file = get_input_filename(do_small)
+    input_file = get_input_filename()
 
     ans1 = solve_part1(input_file)
     print(f'Part 1 answer: {ans1}')
@@ -34,12 +33,9 @@ def solve_part2(input_file):
     return valid_passwds_count
                     
 
-def get_input_filename(do_small):
+def get_input_filename():
     day = os.path.basename(__file__)[3:5]
     input_file = "inputs/day" + day + ".input"
-
-    if do_small:
-        input_file += ".small"
 
     return input_file
 

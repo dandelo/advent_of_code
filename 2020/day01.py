@@ -3,8 +3,7 @@
 import os
 
 def main():
-    do_small = False
-    input_file = get_input_filename(do_small)
+    input_file = get_input_filename()
 
     with open(input_file) as f:
         input = [int(x) for x in f.read().splitlines()]
@@ -32,12 +31,9 @@ def solve_part2(input):
                     return x*y*z
                     
 
-def get_input_filename(do_small):
+def get_input_filename():
     day = os.path.basename(__file__)[3:5]
     input_file = "inputs/day" + day + ".input"
-
-    if do_small:
-        input_file += ".small"
 
     return input_file
 
