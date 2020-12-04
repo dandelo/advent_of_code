@@ -19,9 +19,7 @@ def solve(passports, skip_passport_validation = True):
     for passport in passports:
         passport_fields = dict(field.split(":") for field in passport.split(' '))
         passport_fields.pop('cid', None) # Don't care whether 'cid' exists or not
-        if is_passport_or_north_pole_creds(passport_fields):
-            if skip_passport_validation or is_valid_passport(passport_fields):
-                valid_passports_count += 1
+        valid_passports_count += is_passport_or_north_pole_creds(passport_fields) and (skip_passport_validation or is_valid_passport(passport_fields))
     
     return valid_passports_count
             
