@@ -67,7 +67,7 @@ def is_valid_eye_colour(ecl):
     return ecl in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 
 def is_valid_passport_id(pid):
-    return len(pid) == 9
+    return len(pid) == 9 and pid.isnumeric()
 
 def get_passports():
     input_file = get_input_filename()
