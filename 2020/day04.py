@@ -45,7 +45,10 @@ def is_valid_experation_year(eyr):
     return 2020 <= int(eyr) <= 2030
 
 def is_valid_height(hgt):
-    height = int(hgt[:-2])
+    try:
+        height = int(hgt[:-2])
+    except ValueError:
+        return False
     height_metric = hgt[-2:]
     if height_metric == 'in':
         if not 59 <= height <= 76:
