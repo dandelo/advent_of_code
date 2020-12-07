@@ -4,12 +4,18 @@ from parse import parse
 import networkx as nx
 import os
 
-
 def main():
+    global bags_graph
     bags_graph = get_bags_graph()
-
     print(f'Part 1 answer: {len(nx.ancestors(bags_graph,"shiny gold"))}')
+    print(f'Part 2 answer: {count_bags_in("shiny gold")}')
 
+def count_bags_in(bag):
+    totalBags = 0
+    for bag_colour, bag_number in bags_graph[bag].items():
+        totalBags += bag_number['weight'] * count_bags_in(bag_colour) + bag_number['weight']
+
+    return totalBags
 
 def get_bags_graph():
     G = nx.DiGraph()
@@ -27,13 +33,11 @@ def get_bags_graph():
 
     return G
 
-
 def get_input_filename():
     day = os.path.basename(__file__)[3:5]
     input_file = "inputs/day" + day + ".input"
 
     return input_file
-
 
 if __name__ == '__main__':
     main()
