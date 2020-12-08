@@ -15,10 +15,7 @@ def solve_part2(instrutions):
 
     for idx in nop_and_jmp_idxs:
         instrutions_copy = deepcopy(instrutions)
-        if instrutions_copy[idx][0] == 'jmp':
-            instrutions_copy[idx][0] = 'nop'
-        else:
-            instrutions_copy[idx][0] = 'jmp'
+        instrutions_copy[idx][0] = instrutions_copy[idx][0].replace('jmp','-').replace('nop','jmp').replace('-','nop')
         accumulator, success = solve(instrutions_copy)
         
         if success:
