@@ -3,24 +3,26 @@
 from copy import deepcopy
 import os
 
+
 def main():
     with open(get_input_filename()) as f:
         instrutions = [line.split() for line in f]
-    
+
     print(f'Part 1 answer: {solve(instrutions)[0]}')
     print(f'Part 2 answer: {solve_part2(instrutions)}')
 
+
 def solve_part2(instrutions):
-    nop_and_jmp_idxs = [y for y,x in enumerate(instrutions) if x[0] in ['nop', 'jmp']]
+    nop_and_jmp_idxs = [y for y, x in enumerate(instrutions) if x[0] in ['nop', 'jmp']]
 
     for idx in nop_and_jmp_idxs:
         instrutions_copy = deepcopy(instrutions)
-        instrutions_copy[idx][0] = instrutions_copy[idx][0].replace('jmp','-').replace('nop','jmp').replace('-','nop')
+        instrutions_copy[idx][0] = instrutions_copy[idx][0].replace('jmp', '-').replace('nop', 'jmp').replace('-', 'nop')
         accumulator, success = solve(instrutions_copy)
-        
+
         if success:
             return accumulator
-    
+
 
 def solve(instrutions):
     seen_pointers = set()
@@ -40,10 +42,10 @@ def solve(instrutions):
         if operation == 'acc':
             accumulator += arg
         elif operation == 'jmp':
-            pointer+=arg
+            pointer += arg
             continue
 
-        pointer+=1
+        pointer += 1
 
 
 def get_input_filename():
@@ -51,6 +53,7 @@ def get_input_filename():
     input_file = "inputs/day" + day + ".input"
 
     return input_file
+
 
 if __name__ == '__main__':
     main()
