@@ -2,8 +2,6 @@
 
 import os
 
-# 53183
-
 
 def main():
     instructions = [(line[0], int(line[1:].rstrip('\n')))
