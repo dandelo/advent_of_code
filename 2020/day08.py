@@ -5,6 +5,11 @@ import os
 
 
 def main():
+    # instrutions = []
+    # with open(get_input_filename()) as f:
+    #     for line in f:
+    #         operation, arg = line.split()
+    #         instrutions.append([operation, int(arg)])
     with open(get_input_filename()) as f:
         instrutions = [line.split() for line in f]
 
